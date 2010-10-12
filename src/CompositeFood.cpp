@@ -10,7 +10,7 @@ using namespace std;
 #include <iostream>
 #include <vector>
 
-class CompositeFood : private FoodComponent{
+class CompositeFood : public FoodComponent{
 	string myName;
 
 	public:
