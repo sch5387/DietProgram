@@ -31,7 +31,6 @@ int main() {
 	CompositeFood *comp1 = new CompositeFood("composite1");
 	comp1->add(myFood);
 	comp1->add(comp);
-	comp1->add(secondFood);
 
 	cout << comp1->getName() << endl;
 	cout << comp1->getCalories() << endl;
