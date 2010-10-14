@@ -43,17 +43,15 @@ class DefaultBuilder : public FoodDBBuilder{
 					while(ptr!=NULL){
 						// this is the name of the component to add to this composite food.
 						ptr = strtok(NULL,",");
-
 						// find the appropriate ingredient and add it to the product.
 						vector<FoodComponent*>::iterator iter;
 						for(iter = myFoods.begin();iter!=myFoods.end();iter++){
-							string tempname = (*iter)->getName();
-							stringstream nameStream;
-							string pointername;
-							nameStream << ptr;
-							nameStream >> pointername;
-							if (pointername==tempname){
-								comp->add(*iter);
+							if(ptr!=NULL){
+								string tempname = (*iter)->getName();
+								string pointername = ptr;
+								if (pointername==tempname){
+									comp->add(*iter);
+								}
 							}
 						}
 					}
