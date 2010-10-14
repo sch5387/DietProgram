@@ -17,5 +17,7 @@ int main() {
 	DefaultBuilder* builder = new DefaultBuilder();
 	database->setBuilder(builder);
 	database->loadDB("/cygdrive/c/Users/sxhwcs/DietProgram/src/testfile.txt");
+
+	cout << database->DB[5]->getCalories() << endl;
 	return 0;
 };

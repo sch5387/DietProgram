@@ -9,6 +9,7 @@ using namespace std;
 #include "FoodDBBuilder.h"
 #include "BasicFood.cpp"
 #include "CompositeFood.cpp"
+#include <sstream>
 #include <fstream>
 #include <stdio.h>
 #include <string.h>
@@ -47,10 +48,16 @@ class DefaultBuilder : public FoodDBBuilder{
 						vector<FoodComponent*>::iterator iter;
 						for(iter = myFoods.begin();iter!=myFoods.end();iter++){
 							string tempname = (*iter)->getName();
-							cout << tempname << endl;;
-							cout << ptr << endl;
+							stringstream nameStream;
+							string pointername;
+							nameStream << ptr;
+							nameStream >> pointername;
+							if (pointername==tempname){
+								comp->add(*iter);
+							}
 						}
 					}
+					myFoods.push_back(comp);
 				}
 			}
 		}else{
