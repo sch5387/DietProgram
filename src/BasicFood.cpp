@@ -10,6 +10,10 @@ using namespace std;
 #include <string>
 #include "FoodComponent.h"
 #include "Calorie.cpp"
+#include <stdio.h>
+#include <sstream>
+#include <string.h>
+#include <stdlib.h>
 
 class BasicFood : public FoodComponent{
 
@@ -37,6 +41,17 @@ class BasicFood : public FoodComponent{
 		return 0;
 	}
 
+	vector<string> getComponents(){
+		int calories = getCalories();
+		stringstream ss;
+		ss << calories;
+		string myCalories;
+		ss >> myCalories;
+		vector<string> returnable;
+		returnable.push_back(myCalories);
+		return returnable;
+	}
+
 	void setName(string name){
 		myName = name;
 	}
@@ -45,5 +60,8 @@ class BasicFood : public FoodComponent{
 	}
 	void addNutrient(Nutrient* nutrient){
 		nutrients.push_back(nutrient);
+	}
+	string getType(){
+		return "b";
 	}
 };

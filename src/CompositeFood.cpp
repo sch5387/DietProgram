@@ -45,10 +45,22 @@ class CompositeFood : public FoodComponent{
 		keywords.push_back(keyword);
 	}
 
+	vector<string> getComponents(){
+		vector<string> ingredients;
+		vector<FoodComponent*>::iterator iter;
+		for(iter = components.begin();iter != components.end();iter++){
+			FoodComponent* food = *iter;
+			ingredients.push_back(food->getName());
+		}
+		return ingredients;
+	}
 	vector<string> getKeywords(){
 		return keywords;
 	}
 
+	string getType(){
+		return "c";
+	}
 	private:
 	vector<FoodComponent*> components;
 };

@@ -22,6 +22,8 @@ public:
 
 	virtual void setName(string name)=0;
 	virtual void addKeyword(string keyword)=0;
+	virtual vector<string> getComponents()=0;
+	virtual string getType()=0;
 
 	string myName;
 	vector<string> keywords;

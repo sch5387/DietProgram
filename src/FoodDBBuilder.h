@@ -16,7 +16,7 @@ class FoodDBBuilder{
 	public:
 	vector<FoodComponent*> myFoods;
 	virtual vector<FoodComponent*> loadDB()=0;
-	virtual void saveDB(vector<FoodComponent*>)=0;
+	virtual void saveDB(vector<FoodComponent*> database)=0;
 	virtual void setFile(string filename)=0;
 	FoodComponent* buildComponent();
 	string myFile;

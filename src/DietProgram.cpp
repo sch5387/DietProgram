@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "FoodDB.cpp"
 #include "DefaultBuilder.cpp"
 using namespace std;
@@ -16,8 +17,8 @@ int main() {
 	FoodDB* database = new FoodDB();
 	DefaultBuilder* builder = new DefaultBuilder();
 	database->setBuilder(builder);
-	database->loadDB("/cygdrive/c/Users/sxhwcs/DietProgram/src/testfile.txt");
-
-	cout << database->DB[5]->getCalories() << endl;
+	database->loadDB("C:/Users/Steven Horowitz/DietProgram/src/testfile.txt");
+	database->changeFile("C:/Users/Steven Horowitz/DietProgram/src/testoutput.txt");
+	database->saveDB(database->DB);
 	return 0;
 };

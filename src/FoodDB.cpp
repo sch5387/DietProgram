@@ -23,8 +23,11 @@ class FoodDB{
 		foodBuilder->setFile(filename);
 		DB = foodBuilder->loadDB();
 	}
-	void saveDB(string filename, string format){
-
+	void saveDB(vector<FoodComponent*> database){
+		foodBuilder->saveDB(database);
+	}
+	void changeFile(string target){
+		foodBuilder->setFile(target);
 	}
 	private:
 	FoodDBBuilder* foodBuilder;
