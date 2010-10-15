@@ -5,62 +5,55 @@
  *      Author: sxhwcs
  */
 
-using namespace std;
-#include "FoodComponent.h"
-#include <iostream>
-#include <vector>
+#include "CompositeFood.h"
 
-class CompositeFood : public FoodComponent{
-	string myName;
+string myName;
 
-	public:
-	CompositeFood(string name){
-		myName = name;
-	}
+CompositeFood::CompositeFood(string name) {
+	myName = name;
+}
 
-	void add (FoodComponent *food){
-		components.push_back(food);
-	}
+void CompositeFood::add(FoodComponent *food) {
+	components.push_back(food);
+}
 
-	void setName(string name){
-		myName = name;
-	}
+void CompositeFood::setName(string name) {
+	myName = name;
+}
 
-	string getName(){
-		return myName;
-	}
+string CompositeFood::getName() {
+	return myName;
+}
 
-	int getCalories(){
-		int calories = 0;
-		vector<FoodComponent*>::iterator iter;
-		for(iter = components.begin();iter != components.end();iter++){
-			FoodComponent* food = *iter;
-			calories += food->getCalories();
-			cout << food->getName() << " "<< endl;
-		}
-		return calories;
+int CompositeFood::getCalories() {
+	int calories = 0;
+	vector<FoodComponent*>::iterator iter;
+	for (iter = components.begin(); iter != components.end(); iter++) {
+		FoodComponent* food = *iter;
+		calories += food->getCalories();
+		cout << food->getName() << " " << endl;
 	}
+	return calories;
+}
 
-	void addKeyword(string keyword){
-		keywords.push_back(keyword);
-	}
+void CompositeFood::addKeyword(string keyword) {
+	keywords.push_back(keyword);
+}
 
-	vector<string> getComponents(){
-		vector<string> ingredients;
-		vector<FoodComponent*>::iterator iter;
-		for(iter = components.begin();iter != components.end();iter++){
-			FoodComponent* food = *iter;
-			ingredients.push_back(food->getName());
-		}
-		return ingredients;
+vector<string> CompositeFood::getComponents() {
+	vector<string> ingredients;
+	vector<FoodComponent*>::iterator iter;
+	for (iter = components.begin(); iter != components.end(); iter++) {
+		FoodComponent* food = *iter;
+		ingredients.push_back(food->getName());
 	}
-	vector<string> getKeywords(){
-		return keywords;
-	}
+	return ingredients;
+}
+vector<string> CompositeFood::getKeywords() {
+	return keywords;
+}
 
-	string getType(){
-		return "c";
-	}
-	private:
-	vector<FoodComponent*> components;
-};
+string CompositeFood::getType() {
+	return "c";
+}
+vector<FoodComponent*> components;

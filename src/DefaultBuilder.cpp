@@ -7,8 +7,8 @@
 
 using namespace std;
 #include "FoodDBBuilder.h"
-#include "BasicFood.cpp"
-#include "CompositeFood.cpp"
+#include "BasicFood.h"
+#include "CompositeFood.h"
 #include <fstream>
 #include <stdio.h>
 #include <string.h>
