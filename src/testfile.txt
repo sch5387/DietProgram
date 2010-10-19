@@ -1,6 +1,4 @@
-Bun,b,100,
-Bacon,b,445,
-Cheese,b,20,
-Burger Patty,b,400,
-Bacon Cheese Burger,c,Bun,Burger Patty,Bacon,Cheese,
-Double Bacon Cheese Burger,c,Bacon Cheese Burger,Bacon,Cheese,
+Bun,b,100;
+SuperBun,c,Bun,;
+MegaBun,c,SuperBun,Bun,;
+UltraBun,c,SuperBun,MegaBun,Bun,;

@@ -19,6 +19,11 @@ class FoodDB{
 		foodBuilder = builder;
 	}
 
+	void addFood(char* name, char* type,char* components){
+		FoodComponent* item = foodBuilder->buildComponent(name,type,components);
+		DB.push_back(item);
+	}
+
 	void loadDB(string filename){
 		foodBuilder->setFile(filename);
 		DB = foodBuilder->loadDB();
