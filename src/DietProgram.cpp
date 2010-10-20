@@ -19,7 +19,7 @@ int main() {
 	FoodDB* database = new FoodDB();
 	DefaultBuilder* builder = new DefaultBuilder();
 	database->setBuilder(builder);
-	database->loadDB("C:/Users/Steven Horowitz/DietProgram/src/testfile.txt");
+	database->loadDB("/cygdrive/c/Users/sxhwcs/DietProgram/src/testfile.txt");
 	cout << "**********************************************************" << endl;
 	cout << "** Welcome to the SE20101 Diet Program. Please select an**"<< endl;
 	cout << "**            option from the menu below.               **"<< endl;
@@ -34,7 +34,8 @@ int main() {
 	cout << "how many calories does it have, or what ingredients does it have?";
 	//cin.getline(input,256);
 	//cout << name << type << input << endl;
+	cout << endl;
 	cout << database->DB[3]->getCalories() << endl;
-	database->saveDB(database->DB);
+	//database->saveDB(database->DB);
 	return 0;
 };

@@ -31,7 +31,6 @@ int CompositeFood::getCalories() {
 	for (iter = components.begin(); iter != components.end(); iter++) {
 		FoodComponent* food = *iter;
 		calories += food->getCalories();
-		cout << food->getName() << " " << endl;
 	}
 	return calories;
 }

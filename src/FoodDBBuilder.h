@@ -26,7 +26,6 @@ class FoodDBBuilder{
 	virtual void setFile(string filename)=0;
 	string myFile;
 	FoodComponent* buildComponent(char* foodname, char* foodtype, char* components){
-		cout << myFoods.size() << endl;
 		char* ptr;
 		ptr = NULL;
 		// the item being read is a BasicFood item, and is easy to build.
@@ -42,24 +41,19 @@ class FoodDBBuilder{
 			CompositeFood* comp = new CompositeFood(foodname);
 			ptr = strtok(components,",");
 			while(ptr!=NULL){
-				// this is the name of the component to add to this composite food.
-				ptr = strtok(NULL,",");
 				// find the appropriate ingredient and add it to the product.
 				vector<FoodComponent*>::iterator iter;
 				for(iter = myFoods.begin();iter!=myFoods.end();iter++){
 					if(ptr!=NULL){
 						string tempname = (*iter)->getName();
 						string pointername = ptr;
-						cout << tempname << "==" << pointername << " is: ";
 						if (pointername==tempname){
 							comp->add(*iter);
-							cout << "equal"<< endl;
-						} else
-							cout << "not equal" << endl;
+						}
 					}
 				}
+				ptr = strtok(NULL,",");
 			}
-			cout << "comparison done" << endl << endl;
 			myFoods.push_back(comp);
 			return comp;
 			}
