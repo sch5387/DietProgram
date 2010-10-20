@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <string>
-#include <fstream>
 #include "FoodDB.cpp"
 #include "DefaultBuilder.cpp"
 #include "CompositeFood.h"
@@ -17,8 +16,7 @@ using namespace std;
 int main() {
 	char input[256];
 	FoodDB* database = new FoodDB();
-	DefaultBuilder* builder = new DefaultBuilder();
-	database->setBuilder(builder);
+	database->setBuilder(new DefaultBuilder());
 	database->loadDB("/cygdrive/c/Users/sxhwcs/DietProgram/src/testfile.txt");
 	cout << "**********************************************************" << endl;
 	cout << "** Welcome to the SE20101 Diet Program. Please select an**"<< endl;
