@@ -2,11 +2,10 @@
  * LogCommand.h
  *
  *  Created on: Oct 8, 2010
- *      Author: sxhwcs
+ *      Author: jaw6891@rit.edu
  */
 
 using namespace std;
-#include <string>
 #ifndef LOGCOMMAND_H_
 #define LOGCOMMAND_H_
 
