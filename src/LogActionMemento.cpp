@@ -7,9 +7,12 @@
 
 using namespace std;
 
-class LogActionMemento {
+class LogActionMemento: public LogMomento {
 
+	private vector* state;
 
-
+	public LogActionMomento::LogActionMomento (vector &s) {
+		state = s;
+	};		
 
 };
