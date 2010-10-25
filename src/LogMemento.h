@@ -1,8 +1,10 @@
 /*
  * LogMemento.h
  *
- *  Created on: Oct 8, 2010
- *      Author: jaw6891@rit.edu
+ * Created on: Oct 8, 2010
+ *
+ * Author: jaw6891@rit.edu
+ * Author: rxj9246@g.rit.edu
  */
 
 using namespace std;
@@ -13,7 +15,7 @@ class LogMemento{
 
 	LogMemento(){
 	}
-	virtual createMemento();
+
 	virtual revertTo();
 };
 

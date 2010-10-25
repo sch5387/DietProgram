@@ -7,9 +7,12 @@
 
 using namespace std;
 
-class AddToLog {
+class AddToLog: public LogCommand {
 
-
+	void execute() {
+		
+		
+	}
 
 
 };
