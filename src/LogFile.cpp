@@ -11,11 +11,12 @@ using namespace std;
 class LogFile {
 
 private:
-	vector<string> logItems;
+	vector*<String> logItems;
+	vector*<LogActionMemento> previousStates;
 
 public:
-	LogFile::LogFile(vector<string> logFileItems) {
-		logItems = logFileItems;
+	LogFile::LogFile() {
+
 	}
 
 	void LogFile::addItem() {
@@ -31,6 +32,14 @@ public:
 	}
 
 	void LogFile::redoChange() {
+
+	}
+
+	vector*<String> LogFile::giveLog() {
+		return logItems;
+	}
+
+	void LogFile::setLogItems() {
 
 	}
 
