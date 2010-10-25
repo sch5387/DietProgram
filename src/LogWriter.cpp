@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 class LogWriter {
@@ -18,7 +19,10 @@ private:
 public:
 	LogWriter::LogWriter(LogFile newLog) {
 		Log = newLog;
-	}
+	} //LogWriter
+
+	LogWriter::LogWriter() {
+	} //LogWriter
 
 	void LogWriter::saveLog() {
 		ofstream newFile;
@@ -28,12 +32,22 @@ public:
 		for (iter = components.begin(); iter != components.end(); iter++) {
 			newFile << (&iter + "\n");
 		}
-	}
+		newFile.close();
+	} //saveLog
 
 	LogFile LogWriter::loadLog() {
+		ofstream newFile;
+		vector*<String> logItems;
+		newFile.open("FoodLog.txt");
+		int i = 0;
+		while(!newFile.eof) {
+			String string;
+			getline(newFile,string);
+			logItems->insert(i,string);
+			i++;
+		}
+		newFile.close();
+		return logItems;
+	} //loadLog
 
-	}
-
-
-
-};
+}; //LogWriter

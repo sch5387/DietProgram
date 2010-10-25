@@ -39,4 +39,8 @@ public:
 		return logItems;
 	}
 
+	void LogFile::setLogItems() {
+
+	}
+
 };
