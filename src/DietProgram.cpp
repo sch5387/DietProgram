@@ -11,6 +11,7 @@
 #include "FoodDB.cpp"
 #include "DefaultBuilder.cpp"
 #include "CompositeFood.h"
+#include <unistd.h>
 using namespace std;
 
 char* prune(char* edit){
@@ -68,11 +69,16 @@ void search(FoodDB* database){
 
 int main() {
 
+	char* path = NULL;
+	path = _getcwd(path,256);
+	string pathstring(path);
+	pathstring.append("\\src\\testfile.txt");
+	cout << pathstring << endl;
 	bool run = true;
 	char line[256];
 	FoodDB* database = new FoodDB();
 	database->setBuilder(new DefaultBuilder());
-	database->loadDB("/cygdrive/c/Users/sxhwcs/DietProgram/src/testfile.txt");
+	database->loadDB(pathstring);
 	cout << "**********************************************************" << endl;
 	cout << "** Welcome to the SE20101 Diet Program. Please select an**"<< endl;
 	cout << "**            option from the menu below.               **"<< endl;
