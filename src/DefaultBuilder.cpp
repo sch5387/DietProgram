@@ -29,7 +29,8 @@ class DefaultBuilder : public FoodDBBuilder{
 					char* name = ptr;
 					char* type = strtok(NULL,",");
 					char* components = strtok(NULL,";");
-					FoodComponent* foodItem = buildComponent(name,type,components);
+					char* keywords = strtok(NULL,";");
+					FoodComponent* foodItem = buildComponent(name,type,components,keywords);
 					myFoods.push_back(foodItem);
 				}
 			}
@@ -50,7 +51,17 @@ class DefaultBuilder : public FoodDBBuilder{
 			for(componentIterator=components.begin();componentIterator!=components.end();componentIterator++){
 				output << ","<< (*componentIterator);
 			}
-			output << ";" <<endl;
+			output << ";";
+			vector<string> keywords = (*iter)->getKeywords();
+			vector<string>::iterator keyIterator;
+			for(keyIterator=keywords.begin();keyIterator!=keywords.end();keyIterator++){
+				string type = (*iter)->getType();
+				if(type=="c" && !((CompositeFood*)(*iter))->keyInComponents(*keyIterator))
+					output << "," << (*keyIterator);
+				else if(type=="b")
+					output << "," << (*keyIterator);
+			}
+			output << ";" << endl;
 		}
 		output.close();
 	}

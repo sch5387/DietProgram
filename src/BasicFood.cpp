@@ -28,6 +28,15 @@ int BasicFood::getCalories(){
 	}
 	return 0;
 }
+
+bool BasicFood::hasKeyword(string keyword){
+	for(int i = 0; i< keywords.size();i++){
+		if(keywords[i]==keyword){
+			return true;
+		}
+	}
+}
+
 vector<string> BasicFood::getComponents(){
 	int calories = getCalories();
 	stringstream ss;

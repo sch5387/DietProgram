@@ -15,6 +15,11 @@ CompositeFood::CompositeFood(string name) {
 
 void CompositeFood::add(FoodComponent *food) {
 	components.push_back(food);
+	vector<string> keys = food->keywords;
+	vector<string>::iterator iter;
+	for(iter = keys.begin();iter<keys.end();iter++){
+		addKeyword(*iter);
+	}
 }
 
 void CompositeFood::setName(string name) {
@@ -36,7 +41,27 @@ int CompositeFood::getCalories() {
 }
 
 void CompositeFood::addKeyword(string keyword) {
-	keywords.push_back(keyword);
+	if(hasKeyword(keyword)==false)
+		keywords.push_back(keyword);
+}
+
+bool CompositeFood::hasKeyword(string keyword){
+	for(unsigned int i = 0; i< keywords.size();i++){
+		if(keywords[i]==keyword){
+			return true;
+		}
+	}
+	return false;
+}
+
+bool CompositeFood::keyInComponents(string keyword){
+	vector<FoodComponent*>::iterator iter;
+	for(iter = components.begin();iter !=components.end();iter++){
+		FoodComponent* food = *iter;
+		if(food->hasKeyword(keyword))
+			return true;
+	}
+	return false;
 }
 
 vector<string> CompositeFood::getComponents() {

@@ -19,8 +19,8 @@ class FoodDB{
 		foodBuilder = builder;
 	}
 
-	void addFood(char* name, char* type,char* components){
-		FoodComponent* item = foodBuilder->buildComponent(name,type,components);
+	void addFood(char* name, char* type,char* components,char* keywords){
+		FoodComponent* item = foodBuilder->buildComponent(name,type,components,keywords);
 		DB.push_back(item);
 	}
 
@@ -33,6 +33,21 @@ class FoodDB{
 	}
 	void changeFile(string target){
 		foodBuilder->setFile(target);
+	}
+
+	vector<FoodComponent*> searchDB(string keyword){
+		vector<FoodComponent*> returnable;
+		vector<FoodComponent*>::iterator iter;
+		for(iter = DB.begin();iter!=DB.end();iter++){
+			vector<string> keywords = (*iter)->getKeywords();
+			vector<string>::iterator keyIter;
+			for(keyIter = keywords.begin();keyIter!=keywords.end();keyIter++){
+				string key = (*keyIter);
+				if(key == keyword)
+					returnable.push_back(*iter);
+			}
+		}
+		return returnable;
 	}
 	private:
 	FoodDBBuilder* foodBuilder;

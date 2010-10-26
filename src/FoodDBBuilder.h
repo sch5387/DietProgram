@@ -25,13 +25,14 @@ class FoodDBBuilder{
 	virtual void saveDB(vector<FoodComponent*> database)=0;
 	virtual void setFile(string filename)=0;
 	string myFile;
-	FoodComponent* buildComponent(char* foodname, char* foodtype, char* components){
+	FoodComponent* buildComponent(char* foodname, char* foodtype, char* components, char* keys){
 		char* ptr;
 		ptr = NULL;
 		// the item being read is a BasicFood item, and is easy to build.
 		if (*foodtype=='b'){
 			int calories = atoi(components);
 			BasicFood* basic = new BasicFood(foodname,calories);
+			addKeywords(keys,basic);
 			myFoods.push_back(basic);
 			return basic;
 
@@ -54,11 +55,22 @@ class FoodDBBuilder{
 				}
 				ptr = strtok(NULL,",");
 			}
+			addKeywords(keys,comp);
 			myFoods.push_back(comp);
 			return comp;
 			}
 		}
 		return NULL;
+	}
+
+	void addKeywords(char* keywords, FoodComponent* component){
+		char* ptr;
+		vector<string>::iterator iter;
+		ptr = strtok(keywords,",");
+		while(ptr!=NULL){
+			component->addKeyword(*(new string(ptr)));
+			ptr = strtok(NULL,",");
+		}
 	}
 };
 

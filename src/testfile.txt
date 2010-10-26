@@ -1,4 +1,6 @@
-Bun,b,100;
-SuperBun,c,Bun,;
-MegaBun,c,SuperBun,Bun,;
-UltraBun,c,SuperBun,MegaBun,Bun,;
+Bun,b,100;,tastierbun;
+SuperBun,c,Bun;,supertastybun;
+MegaBun,c,SuperBun,Bun;,megatastybun;
+UltraBun,c,SuperBun,MegaBun,Bun;,ultratastybun;
+cheese,b,255;,milky;
+double cheese,c,cheese,cheese;,ultramilky;

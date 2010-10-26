@@ -23,6 +23,8 @@ class CompositeFood : public FoodComponent{
 	int getCalories();
 	void addKeyword(string keyword);
 	vector<string> getComponents();
+	bool keyInComponents(string keyword);
+	bool hasKeyword(string keyword);
 	vector<string> getKeywords();
 	string getType();
 

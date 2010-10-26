@@ -24,6 +24,7 @@ class BasicFood : public FoodComponent{
 	vector<string> getComponents();
 	void setName(string name);
 	void addKeyword(string keyword);
+	bool hasKeyword(string keyword);
 	void addNutrient(Nutrient* nutrient);
 	string getType();
 };
