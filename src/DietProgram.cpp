@@ -12,6 +12,7 @@
 #include "DefaultBuilder.cpp"
 #include "CompositeFood.h"
 #include <unistd.h>
+#include "Profile.h"
 using namespace std;
 
 char* prune(char* edit){
@@ -69,16 +70,12 @@ void search(FoodDB* database){
 
 int main() {
 
-	char* path = NULL;
-	path = _getcwd(path,256);
-	string pathstring(path);
-	pathstring.append("\\src\\testfile.txt");
-	cout << pathstring << endl;
 	bool run = true;
 	char line[256];
 	FoodDB* database = new FoodDB();
 	database->setBuilder(new DefaultBuilder());
-	database->loadDB(pathstring);
+	Profile* myProfile = new Profile();
+	database->loadDB("/home/fall2006/sch5387/Workspace/DietProgram/testfile.txt");
 	cout << "**********************************************************" << endl;
 	cout << "** Welcome to the SE20101 Diet Program. Please select an**"<< endl;
 	cout << "**            option from the menu below.               **"<< endl;
@@ -90,6 +87,9 @@ int main() {
 		cout << "3) Save the food Database" << endl;
 		cout << "4) Search the food Database" << endl;
 		cout << "5) Save and Quit" << endl;
+		cout << "6) Change my profile" << endl;
+		cout << "7) Get target calories using HarrisBenedict method"<< endl;
+		cout << "8) Get target calories using Mifflin method"<< endl;
 		cin.getline(line,256);
 		if (line[0]=='1'){
 			add(database);
@@ -103,6 +103,12 @@ int main() {
 			search(database);
 		} else if (line[0]=='5'){
 			run = false;
+		} else if (line[0]=='6'){
+			myProfile->setProfile();
+		} else if (line[0]=='7'){
+			cout << myProfile->getDailyCalories(1) << " Calories is target" << endl;
+		} else if (line[0]=='8'){
+			cout << myProfile->getDailyCalories(2) << " Calories is target" << endl;
 		}
 	}
 
