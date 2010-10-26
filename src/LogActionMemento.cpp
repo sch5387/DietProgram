@@ -8,21 +8,26 @@
  */
 
 #include "LogMemento.h"
-
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 using namespace std;
 
 class LogActionMemento: public LogMemento {
 	private:
-	 	vector*<Stirng> state;
+	 	vector<string>* state;
 
 	public: 
-		void LogActionMemento::LogActionMomento (vector*<String> s) 
-			LogMemento::LogMemento();
+		LogActionMemento(vector<string> *s) 
+
 		{
 			state = s;
 		};
 
-		vector*<String> LogMemento::revertTo() {
+		vector<string>* LogMemento::revertTo() {
 			return state;
 		};
 };

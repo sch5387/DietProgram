@@ -6,10 +6,14 @@
 * Author: jaw6891@rit.edu "Jordan Wayman"
 */
 
+using namespace std;
 #include <iostream>
 #include <fstream>
 #include <vector>
-using namespace std;
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "LogFile.cpp"
 
 class LogWriter {
 
@@ -26,24 +30,24 @@ public:
 
 	void LogWriter::saveLog() {
 		ofstream newFile;
-		vector*<String> logItems = Log.giveLog();
+		unsigned int i;
+		vector<string> *logItems = Log.giveLog();
 		newFile.open("FoodLog.txt");
-		vector*<FoodComponent>::iterator iter;
-		for (iter = components.begin(); iter != components.end(); iter++) {
-			newFile << (&iter + "\n");
+		for (i=0; i < logItems->size;i++) {
+			newFile << (logItems->at(i) + "\n");
 		}
 		newFile.close();
 	} //saveLog
 
 	LogFile LogWriter::loadLog() {
 		ofstream newFile;
-		vector*<String> logItems;
+		vector<string> *logItems;
 		newFile.open("FoodLog.txt");
 		int i = 0;
 		while(!newFile.eof) {
-			String string;
-			getline(newFile,string);
-			logItems->insert(i,string);
+			string line;
+			getline(newFile,line);
+			logItems->insert(i,line);
 			i++;
 		}
 		newFile.close();
