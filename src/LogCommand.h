@@ -1,19 +1,14 @@
-/*
- * LogCommand.h
- *
- *  Created on: Oct 8, 2010
- *      Author: jaw6891@rit.edu
- */
+#ifndef _LOGCOMMAND_H
+#define _LOGCOMMAND_H
+#include <vector>
+#include <string>
 
-using namespace std;
-#ifndef LOGCOMMAND_H_
-#define LOGCOMMAND_H_
+class LogCommand {
 
-class LogCommand{
+public:
+	LogCommand() { }
 
-	LogCommand(){
-	}
-	virtual void execute(vector*<String> v);
+	vector<string> virtual execute(vector<string>,string item) = 0;
+
 };
-
-#endif /* LOGCOMMAND_H_ */
+#endif

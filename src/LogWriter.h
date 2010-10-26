@@ -1,32 +1,17 @@
-/*
- * LogWriter.h
- *
- * Created on: Oct 8, 2010
- *
- * Author: jaw6891@rit.edu
- */
-
-#ifndef LOGWRITER_H_
-#define LOGWRITER_H_
-using namespace std;
+#ifndef _LOGWRITER_H
+#define _LOGWRITER_H
+#include <string>
+#include <vector>
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "LogFile.cpp"
 
-class LogWriter{
+class LogWriter {
 
-	LogWriter(LogFile newLog){
-	}
+public:
+	LogWriter() {}
 
-	LogWriter() {
-	}
+	void saveLogFile(vector<string> logFile);
+	vector<string> loadLogFile();
 
-	virtual saveLog();
-	virtual loadLog();
 };
-
-#endif /* LOGWRITER_H_ */
+#endif

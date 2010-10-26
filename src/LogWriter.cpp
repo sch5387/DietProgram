@@ -1,57 +1,30 @@
-/*
-* LogWriter.cpp
-* <<IOStream>>
-*
-* Created October 24th, 2010
-* Author: jaw6891@rit.edu "Jordan Wayman"
-*/
+#include "LogWriter.h"
 
 using namespace std;
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "LogFile.cpp"
 
-class LogWriter {
+LogWriter::LogWriter() {
+};
 
-private:
-	LogFile Log;
+void LogWriter::saveLogFile(vector<string> logFile) {
+	unsigned int i;
+	ofstream file;
+	file.open("LogFile.txt");
+	for(i = 0; i < logFile.size; i++) {
+		file << logFile.at(i) << "\n";
+	}
+	file.close();
+};
 
-public:
-	LogWriter::LogWriter(LogFile newLog) {
-		Log = newLog;
-	} //LogWriter
-
-	LogWriter::LogWriter() {
-	} //LogWriter
-
-	void LogWriter::saveLog() {
-		ofstream newFile;
-		unsigned int i;
-		vector<string> *logItems = Log.giveLog();
-		newFile.open("FoodLog.txt");
-		for (i=0; i < logItems->size;i++) {
-			newFile << (logItems->at(i) + "\n");
+vector<string> LogWriter::loadLogFile(string name) {
+	vector<string> loadedLog;
+	ifstream file;
+	string line;
+	file.open("LogFile.txt");
+	if (file.is_open) {
+		while (file.good()) {
+			getline(file,line);
+			loadedLog.push_back(line);
 		}
-		newFile.close();
-	} //saveLog
-
-	LogFile LogWriter::loadLog() {
-		ofstream newFile;
-		vector<string> *logItems;
-		newFile.open("FoodLog.txt");
-		int i = 0;
-		while(!newFile.eof) {
-			string line;
-			getline(newFile,line);
-			logItems->insert(i,line);
-			i++;
-		}
-		newFile.close();
-		return logItems;
-	} //loadLog
-
-}; //LogWriter
+	}
+	return loadedLog;
+};

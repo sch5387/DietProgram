@@ -1,32 +1,29 @@
-/*
- * LogFile.h
- *
- * Created on: Oct 8, 2010
- *
- * Author: jaw6891@rit.edu
- */
-
-#ifndef LOGFILE_H_
-#define LOGFILE_H_
-using namespace std;
-#include <iostream>
-#include <fstream>
+#ifndef _LOGFILE_H
+#define _LOGFILE_H
+#include <string>
 #include <vector>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "LogWriter.h"
+#include "LogCommand.h"
+#include "AddToLog.h"
+#include "DeleteFromLog.h"
 
-class LogFile{
+class LogFile {
 
-	LogFile(){
-	}
+private:
+	vector<string> logItems;
+	LogWriter writer;
+	AddToLog logAdder;
+	DeleteFromLog logDeleter;
+	LogActionMemento memento;
 
-	virtual addItem();
-	virtual removeItem();
-	virtual undoChange();
-	virtual redoChange();
-	virtual giveLog();
-	virtual setLogItems();
+public:
+	LogFile() {}
+
+	void addToLog(string name) = 0;
+	void deleteFromLog(string name) = 0;
+	void undoEdit() = 0;
+	void saveLog() = 0;
+	void loadLog() = 0;
+
 };
-
-#endif /* LOGFILE_H_ */
+#endif

@@ -1,51 +1,32 @@
-/*
-* LogFile.cpp
-*
-* Created October 24th, 2010
-* Author: jaw6891@rit.edu "Jordan Wayman"
-*/
+#include "LogFile.h"
 
 using namespace std;
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
-class LogFile {
+LogFile::LogFile() {
+	writer = new LogWriter::LogWriter();
+	loadLog;
+	logAdder = new AddToLog::AddToLog();
+	logDeleter = new DeleteFromLog::DeleteFromLog();
+	memento = new LogActionMemento();
+	memento.addSnap(logItems);
+};
 
-private:
-	vector<string> *logItems;
-	// vector<LogActionMemento> *previousStates;
+void LogFile::addToLog(string name) {
+	logItems = logAdder.execute(logItems,name);
+};
 
-public:
-	LogFile::LogFile() {
+void LogFile::deleteFromLog(string name) {
+	logItems = logDeleter.execute(logItems,name);
+};
 
-	}
+void LogFile::undoEdit() {
+	logItems = memento.undo(logItems);
+};
 
-	void LogFile::addItem() {
+void LogFile::saveLog() {
+	writer.saveLogFile();
+};
 
-	}
-
-	void LogFile::removeItem() {
-
-	}
-
-	void LogFile::undoChange() {
-
-	}
-
-	void LogFile::redoChange() {
-
-	}
-
-	vector<string>* LogFile::giveLog() {
-		return logItems;
-	}
-
-	void LogFile::setLogItems() {
-
-	}
-
+void LogFile::loadLog() {
+	logItems = writer.loadLogFile();
 };
