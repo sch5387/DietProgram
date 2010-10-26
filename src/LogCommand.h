@@ -13,7 +13,7 @@ class LogCommand{
 
 	LogCommand(){
 	}
-	virtual void execute();
+	virtual void execute(vector*<String> v);
 };
 
 #endif /* LOGCOMMAND_H_ */

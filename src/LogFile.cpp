@@ -6,13 +6,18 @@
 */
 
 using namespace std;
+#include <iostream>
+#include <fstream>
 #include <vector>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 class LogFile {
 
 private:
-	vector*<String> logItems;
-	vector*<LogActionMemento> previousStates;
+	vector<string> *logItems;
+	// vector<LogActionMemento> *previousStates;
 
 public:
 	LogFile::LogFile() {
@@ -35,7 +40,7 @@ public:
 
 	}
 
-	vector*<String> LogFile::giveLog() {
+	vector<string>* LogFile::giveLog() {
 		return logItems;
 	}
 

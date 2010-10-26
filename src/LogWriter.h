@@ -1,12 +1,13 @@
 /*
- * LogMemento.h
+ * LogWriter.h
  *
  * Created on: Oct 8, 2010
  *
  * Author: jaw6891@rit.edu
- * Author: rxj9246@g.rit.edu
  */
 
+#ifndef LOGWRITER_H_
+#define LOGWRITER_H_
 using namespace std;
 #include <iostream>
 #include <fstream>
@@ -14,15 +15,18 @@ using namespace std;
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#ifndef LOGMEMENTO_H_
-#define LOGMEMENTO_H_
+#include "LogFile.cpp"
 
-class LogMemento{
+class LogWriter{
 
-	LogMemento(){
+	LogWriter(LogFile newLog){
 	}
 
-	virtual revertTo();
+	LogWriter() {
+	}
+
+	virtual saveLog();
+	virtual loadLog();
 };
 
-#endif /* LOGMEMENTO_H_ */
+#endif /* LOGWRITER_H_ */
