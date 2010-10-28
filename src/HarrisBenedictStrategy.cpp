@@ -1,12 +1,11 @@
 #include "HarrisBenedictStrategy.h"
 
 double HarrisBenedictStrategy::calcDailyCalories() {
-	Profile::Profile & profile = *this->profile;
 	double gender;
 	double weightMult;
 	double heightMult;
 	double ageMult;
-	if (profile.getGender().compare("female") == 0) {
+	if (profile->getGender().compare("female") == 0) {
 		gender = 655;
 		weightMult = 4.35;
 		heightMult = 4.7;
@@ -18,10 +17,10 @@ double HarrisBenedictStrategy::calcDailyCalories() {
 		heightMult = 12.7;
 		ageMult = 6.76;
 	}
-	double age = ageMult * profile.getAge();
-	double height = heightMult * (profile.getHeightFeet() * 12 + profile.getHeightInches());
-	double weight = weightMult * profile.getWeight();
-	double activityLevel = calcActivityLevel(profile.getActivityLevel());
+	double age = ageMult * profile->getAge();
+	double height = heightMult * (profile->getHeightFeet() * 12 + profile->getHeightInches());
+	double weight = weightMult * profile->getWeight();
+	double activityLevel = calcActivityLevel(profile->getActivityLevel());
 	return activityLevel * (gender + weight + height - age);
 }
 

@@ -7,7 +7,7 @@
 class Profile {
 
 private:
-	ProfileFile * filePointer;
+	ProfileFile* filePointer;
 	int age;
 	int activityLevel;
 	std::string gender;

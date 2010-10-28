@@ -4,3 +4,4 @@ MegaBun,c,SuperBun,Bun;,megatastybun;
 UltraBun,c,SuperBun,MegaBun,Bun;,ultratastybun;
 cheese,b,255;,milky;
 double cheese,c,cheese,cheese;,ultramilky;
+JeebusBun,c,Bun,Bun;,double bun;

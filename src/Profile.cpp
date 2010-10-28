@@ -9,8 +9,8 @@
 using namespace std;
 
 Profile::Profile() {
-	filePointer = new ProfileFile::ProfileFile("profile.diet");
-	ProfileFile::ProfileFile & file = *filePointer;
+	filePointer = new ProfileFile("profile.diet");
+	ProfileFile & file = *filePointer;
 	vector<string> settings = file.readFile();
 	if (settings.size() == 6) {
 		age = atoi(settings.at(2).c_str());
@@ -47,7 +47,7 @@ void Profile::writeProfile() {
 	stringToken.str(std::string());
 	stringToken << inches;
 	settings.push_back(stringToken.str());
-	ProfileFile::ProfileFile & file = *filePointer;
+	ProfileFile & file = *filePointer;
 	file.writeFile(settings);
 }
 
@@ -156,13 +156,13 @@ bool Profile::setGender(string user_gender) {
 }
 
 double Profile::getDailyCalories(int method) {
-	ProfileStrategy::ProfileStrategy * strat;
+	ProfileStrategy* strat;
 	if (method == 1) {
-		strat = new MifflinStrategy::MifflinStrategy(this);
+		strat = new MifflinStrategy(this);
 	}
 	else {
-		strat = new HarrisBenedictStrategy::HarrisBenedictStrategy(this);
+		strat = new HarrisBenedictStrategy(this);
 	}
-	ProfileStrategy::ProfileStrategy & strategy = *strat;
+	ProfileStrategy & strategy = *strat;
 	return strategy.calcDailyCalories();
 }

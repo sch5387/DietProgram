@@ -13,6 +13,7 @@
 #include "CompositeFood.h"
 #include <unistd.h>
 #include "Profile.h"
+#include "LogIO.cpp"
 using namespace std;
 
 char* prune(char* edit){
@@ -70,12 +71,21 @@ void search(FoodDB* database){
 
 int main() {
 
+	char* path = NULL;
+	path = _getcwd(path,256);
+	string pathstring(path);
+	string logstring(path);
+	logstring.append("\\src\\logfile.txt");
+	pathstring.append("\\src\\testfile.txt");
 	bool run = true;
 	char line[256];
 	FoodDB* database = new FoodDB();
 	database->setBuilder(new DefaultBuilder());
 	Profile* myProfile = new Profile();
-	database->loadDB("/home/fall2006/sch5387/Workspace/DietProgram/testfile.txt");
+	database->loadDB(pathstring);
+
+	LogIO* log = new LogIO(logstring);
+	log->readLog();
 	cout << "**********************************************************" << endl;
 	cout << "** Welcome to the SE20101 Diet Program. Please select an**"<< endl;
 	cout << "**            option from the menu below.               **"<< endl;
@@ -90,6 +100,7 @@ int main() {
 		cout << "6) Change my profile" << endl;
 		cout << "7) Get target calories using HarrisBenedict method"<< endl;
 		cout << "8) Get target calories using Mifflin method"<< endl;
+		cout << "9) Print the log file"<< endl;
 		cin.getline(line,256);
 		if (line[0]=='1'){
 			add(database);
@@ -109,6 +120,8 @@ int main() {
 			cout << myProfile->getDailyCalories(1) << " Calories is target" << endl;
 		} else if (line[0]=='8'){
 			cout << myProfile->getDailyCalories(2) << " Calories is target" << endl;
+		} else if (line[0]=='9'){
+			log->printLog();
 		}
 	}
 
